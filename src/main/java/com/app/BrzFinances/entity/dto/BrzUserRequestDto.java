@@ -12,6 +12,4 @@ public record BrzUserRequestDto(@NotBlank @JsonProperty("first_name") String fir
     public BrzUser toUser(){
         return new BrzUser(firstName, secondName, cpf, email, password);
     }
-
-    public record UpdateRequestDto(String firstName, String secondName, String cpf, String email, String password){}
 }
