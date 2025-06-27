@@ -41,7 +41,9 @@ public class BrzUserServiceImpl implements BrzUserService{
     @Override
     public BrzUserResponseDto updateUserById(Long id, BrzUserRequestDto brzUserRequestDto) {
         var optUser = findUserById(id);
-
+        Updater.updateUser(optUser, brzUserRequestDto);
+        brzUserRepository.save(optUser);
+        return BrzUserResponseDto.convert.toDto(optUser);
     }
 
     @Override

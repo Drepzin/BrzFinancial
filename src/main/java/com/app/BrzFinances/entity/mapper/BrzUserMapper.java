@@ -6,6 +6,4 @@ import org.mapstruct.Mapper;
 
 @Mapper
 public interface BrzUserMapper {
-
-    BrzUser updateUserFromDto(BrzUser brzUser, BrzUserRequestDto brzUserRequestDto);
 }
