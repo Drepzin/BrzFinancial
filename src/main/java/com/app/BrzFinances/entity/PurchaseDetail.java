@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "purchase_detail")
@@ -13,7 +14,7 @@ public class PurchaseDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date hours;
+    private LocalTime hours;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
@@ -25,19 +26,20 @@ public class PurchaseDetail {
     private BigDecimal totalValue;
 
     @ManyToOne
-    @JoinColumn(name = "extract_id")
-    private DailyTotalExtract dailyTotalExtract;
-
-    @ManyToOne
     @JoinColumn(name = "payment_method")
     private PaymentMethod paymentMethod;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private BrzUser brzUser;
+
     public PurchaseDetail(){}
 
-    public PurchaseDetail(Date hours, Product product, Integer quantity) {
+    public PurchaseDetail(LocalTime hours, Product product, Integer quantity, PaymentMethod paymentMethod) {
         this.hours = hours;
         this.product = product;
         this.quantity = quantity;
+        this.paymentMethod = paymentMethod;
     }
 
     public Long getId() {
@@ -48,11 +50,11 @@ public class PurchaseDetail {
         this.id = id;
     }
 
-    public Date getHours() {
+    public LocalTime getHours() {
         return hours;
     }
 
-    public void setHours(Date hours) {
+    public void setHours(LocalTime hours) {
         this.hours = hours;
     }
 
@@ -70,6 +72,22 @@ public class PurchaseDetail {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public BrzUser getBrzUser() {
+        return brzUser;
+    }
+
+    public void setBrzUser(BrzUser brzUser) {
+        this.brzUser = brzUser;
     }
 
     public BigDecimal getTotalValue() {

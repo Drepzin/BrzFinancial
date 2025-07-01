@@ -27,7 +27,7 @@ public class BrzUser {
     private String password;
 
     @OneToMany(mappedBy = "brzUser")
-    private List<DailyTotalExtract> dailyTotalExtracts;
+    private List<PurchaseDetail> purchaseDetails;
 
     public BrzUser(){}
 
@@ -87,11 +87,11 @@ public class BrzUser {
         this.password = password;
     }
 
-    public List<DailyTotalExtract> getDailyTotalExtracts() {
-        return dailyTotalExtracts;
+    public List<PurchaseDetail> getPurchaseDetails() {
+        return purchaseDetails;
     }
 
-    public void addDailyTotalExtract(DailyTotalExtract dailyTotalExtract){
-        dailyTotalExtracts.add(dailyTotalExtract);
+    public void addPurchaseDetail(PurchaseDetail detail){
+        purchaseDetails.add(detail);
     }
 }

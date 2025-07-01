@@ -4,6 +4,7 @@ import com.app.BrzFinances.entity.BrzUser;
 import com.app.BrzFinances.entity.dto.BrzUserRequestDto;
 import com.app.BrzFinances.exception.CpfOrEmailAlreadyExistException;
 import com.app.BrzFinances.repository.BrzUserRepository;
+import com.app.BrzFinances.service.impl.BrzUserServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

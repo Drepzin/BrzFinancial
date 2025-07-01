@@ -1,4 +1,4 @@
-package com.app.BrzFinances.service;
+package com.app.BrzFinances.service.impl;
 
 import com.app.BrzFinances.entity.BrzUser;
 import com.app.BrzFinances.entity.dto.BrzUserRequestDto;
@@ -7,13 +7,14 @@ import com.app.BrzFinances.exception.BrzFinanceException;
 import com.app.BrzFinances.exception.CpfOrEmailAlreadyExistException;
 import com.app.BrzFinances.exception.UserNotFoundException;
 import com.app.BrzFinances.repository.BrzUserRepository;
+import com.app.BrzFinances.service.BrzUserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BrzUserServiceImpl implements BrzUserService{
+public class BrzUserServiceImpl implements BrzUserService {
 
     private final BrzUserRepository brzUserRepository;
 

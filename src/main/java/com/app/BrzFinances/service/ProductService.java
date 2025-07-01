@@ -2,28 +2,20 @@ package com.app.BrzFinances.service;
 
 import com.app.BrzFinances.entity.Product;
 import com.app.BrzFinances.entity.dto.ProductDto;
-import com.app.BrzFinances.exception.ProductAlreadyExistException;
-import com.app.BrzFinances.repository.ProductRepository;
-import org.springframework.stereotype.Service;
 
-@Service
-public class ProductService {
+import java.util.List;
 
-    private final ProductRepository productRepository;
+public interface ProductService {
 
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+    ProductDto addProduct(ProductDto productDto);
 
-    public ProductDto addProduct(ProductDto productDto){
-        Product product = productDto.toProduct();
-        var optProduct = productRepository.findProductByNameAndPrice(product.getName(), product.getPrice());
-        if(optProduct.isPresent()){
-            throw new ProductAlreadyExistException("This product is already registered");
-        }
-        productRepository.save(product);
-        return productDto;
-    }
+    void deleteProductById(Long id);
 
+    void deleteProductByName(String name);
 
+    ProductDto updateProduct(Long id, ProductDto productDto);
+
+    List<ProductDto> getAllProducts();
+
+    Product findProductByName(String name);
 }

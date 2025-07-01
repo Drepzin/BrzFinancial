@@ -17,7 +17,7 @@ public class PaymentMethod {
 
     private Integer code;
 
-    @OneToMany(mappedBy = "paymentMethod")
+    @OneToMany(mappedBy = "paymentMethod", fetch = FetchType.LAZY)
     private List<PurchaseDetail> purchaseDetails = new ArrayList<>();
 
     public PaymentMethod(){}

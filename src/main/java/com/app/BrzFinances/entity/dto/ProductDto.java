@@ -13,6 +13,10 @@ public record ProductDto(@NotBlank String name, @NotNull BigDecimal price) {
         return new Product(name, price);
     }
 
+    public static ProductDto toDto(Product product){
+        return new ProductDto(product.getName(), product.getPrice());
+    }
+
     public class convert {
 
         public static List<ProductDto> toProductList(List<Product> products){
